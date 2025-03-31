@@ -79,7 +79,7 @@ function App() {
       <PomodoroTimer /> {/* Add the PomodoroTimer game here */}
      <div className="app-container">
       <video className="video-bg" autoPlay muted playsInline>
-        <source src="/bg-video4.mp4" type="video/mp4" />
+        <source src="/bg-video.mp4" type="video/mp4" />
       </video>
       </div>
      
