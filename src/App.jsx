@@ -64,7 +64,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = "Reminder4LD"; // Change this to your desired title
+    document.title = "To-Do"; // Change this to your desired title
   }, []);
       
 
@@ -77,9 +77,17 @@ function App() {
       <TodoList handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} selectedTab={selectedTab} todos={todos} />
       <TodoInput handleAddTodo={handleAddTodo} />
       <PomodoroTimer /> {/* Add the PomodoroTimer game here */}
+      <div class="language-switcher">
+         <a href="https://icuestodoapp.netlify.app/" class="flag-link">
+           <span class="flag-icon flag-icon-gb"></span>
+        </a>
+        <a href="https://remindericuevn.netlify.app/" class="flag-link">
+           <span class="flag-icon flag-icon-vn"></span>
+       </a>
+      </div>
      <div className="app-container">
       <video className="video-bg" autoPlay muted playsInline>
-        <source src="/bg-video4.mp4" type="video/mp4" />
+        <source src="/bg-video.mp4" type="video/mp4" />
       </video>
       </div>
      
