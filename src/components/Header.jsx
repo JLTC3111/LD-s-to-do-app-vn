@@ -5,7 +5,7 @@ export function Header({ todos }) {
     return (
         <header>
             <h1 className="text-gradient">
-                Bạn Có <span className="font-bold text-4xl text-red-500">{incompleteTodos} Công Việc Chưa Hoàn Thành </span> 
+                Có <span className="font-bold text-4xl text-red-500">{incompleteTodos} Việc Chưa Làm </span> 
             </h1>
         </header>
     );
