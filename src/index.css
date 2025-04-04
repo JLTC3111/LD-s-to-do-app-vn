@@ -173,8 +173,8 @@ hr {
 
 .language-switcher {
   position: absolute; /* Ensure it moves relative to <body> */
-  top: 230px; /* Adjust vertical positioning */
-  right: 140px; /* Adjust horizontal positioning */
+  top: 250px; /* Adjust vertical positioning */
+  right: 100px; /* Adjust horizontal positioning */
   display: flex;
   gap: 8px; /* Adjust spacing between flags */
   align-items: center;
@@ -245,7 +245,7 @@ hr {
   .language-switcher {
     position: absolute; /* Ensure it moves relative to <body> */
     top: 240px; /* Adjust vertical positioning */
-    right: 425px; /* Adjust horizontal positioning */
+    right: 450px; /* Adjust horizontal positioning */
     display: flex;
     gap: 10px; /* Adjust spacing between flags */
     align-items: center;
