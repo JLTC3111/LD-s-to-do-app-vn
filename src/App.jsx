@@ -64,7 +64,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = "To-Do"; // Change this to your desired title
+    document.title = "Nhắc Nhở Việc"; // Change this to your desired title
   }, []);
       
 
