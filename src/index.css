@@ -173,7 +173,7 @@ hr {
 
 .language-switcher {
   position: absolute; /* Ensure it moves relative to <body> */
-  top: 250px; /* Adjust vertical positioning */
+  top: 270px; /* Adjust vertical positioning */
   right: 100px; /* Adjust horizontal positioning */
   display: flex;
   gap: 8px; /* Adjust spacing between flags */
