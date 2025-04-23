@@ -33,10 +33,10 @@ export function TodoCard(props) {
                 setIsEditing(false);
               }}
             >
-              <h6>Save</h6>
+              <h6>Lưu</h6>
             </button>
             <button onClick={() => setIsEditing(false)}>
-              <h6>Cancel</h6>
+              <h6>Huỷ</h6>
             </button>
           </>
         ) : (
@@ -45,13 +45,13 @@ export function TodoCard(props) {
               onClick={() => handleCompleteTodo(todoIndex)}
               disabled={todo.complete}
             >
-              <h6>Done</h6>
+              <h6>Xong</h6>
             </button>
             <button onClick={() => handleDeleteTodo(todoIndex)}>
-              <h6>Delete</h6>
+              <h6>Xoá</h6>
             </button>
             <button onClick={() => setIsEditing(true)}>
-              <h6>Edit</h6>
+              <h6>Sửa</h6>
             </button>
           </>
         )}
