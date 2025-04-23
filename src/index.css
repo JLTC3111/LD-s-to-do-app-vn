@@ -114,6 +114,19 @@ hr {
   background: var(--color-link-transparent);
 }
 
+.delete-button {
+  background-color: #f7ff03;     /* soft red */
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #d9363e;     /* deeper red on hover */
+}
 
 .todo-item p {
   font-weight: 500;
