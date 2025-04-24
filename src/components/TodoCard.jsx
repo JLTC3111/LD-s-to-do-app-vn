@@ -47,7 +47,7 @@ export function TodoCard(props) {
             >
               <h6>Xong</h6>
             </button>
-            <button onClick={() => handleDeleteTodo(todoIndex)}>
+            <button className="delete-button" onClick={() => handleDeleteTodo(todoIndex)}>
               <h6>Xoá</h6>
             </button>
             <button onClick={() => setIsEditing(true)}>
