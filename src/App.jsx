@@ -34,7 +34,7 @@ function App() {
     handleSaveData(newTodoList)
   }
 
-  function handleEditTodo(index, newText) {function handleEditTodo(index, newText) {
+  function handleEditTodo(index, newText) {
     const updatedTodos = [...todos];
     updatedTodos[index].input = newText;
     setTodos(updatedTodos);
@@ -93,4 +93,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
