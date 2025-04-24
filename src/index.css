@@ -16,19 +16,16 @@
 
 h1 {
   width: fit-content;
-  margin-top:50px;
 }
 
 .tab-container {
-  margin-top: 30px;
-  margin-bottom: 10px;
   overflow-x: auto;
 }
 
 .tab-button {
   border: none;
   box-shadow: none;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   background: rgb(254, 254, 244);
 }
@@ -66,7 +63,7 @@ hr {
   flex-direction: column;
   gap: 0.5rem;
   border: none;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .todo-complete {
@@ -88,6 +85,7 @@ hr {
   gap: 1rem;
   position: relative;
   z-index: 5;
+  margin-bottom: 20px;
 }
 
 .todo-buttons button {
@@ -103,8 +101,8 @@ hr {
 .todo-buttons button:first-of-type {
   /* color: #8aff80;
   background: rgba(138, 255, 128, .1); */
-  color: rgb(251, 247, 247);
-  background: forestgreen;
+  color: rgb(0, 0, 0);
+  background: rgb(201, 255, 201);
 }
 
 .todo-buttons button:last-of-type {
@@ -184,9 +182,22 @@ hr {
   z-index: 1;
 }
 
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-top: -300px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
 .language-switcher {
   position: absolute; /* Ensure it moves relative to <body> */
-  top: 230px; /* Adjust vertical positioning */
+  top: 140px; /* Adjust vertical positioning */
   right: 100px; /* Adjust horizontal positioning */
   display: flex;
   gap: 8px; /* Adjust spacing between flags */
@@ -249,16 +260,15 @@ hr {
     display: flex;
     justify-content: center;
     padding: 10px 0;
-    margin-top: -50px;
+    margin-top: -300px;
     position: relative;
     bottom: 0;
     width: 100%;
   }
-
   .language-switcher {
     position: absolute; /* Ensure it moves relative to <body> */
     top: 40px; /* Adjust vertical positioning */
-    right: 350px; /* Adjust horizontal positioning */
+    right: 360px; /* Adjust horizontal positioning */
     display: flex;
     gap: 10px; /* Adjust spacing between flags */
     align-items: center;
