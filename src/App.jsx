@@ -74,7 +74,7 @@ function App() {
       <PomodoroTimer /> {/* Add the PomodoroTimer game here */}
       
       <div class="language-switcher">
-         <a href="https://icuestodoapp.netlify.app/" class="flag-link">
+         <a href="https://reminder4ld.netlify.app/" class="flag-link">
            <span class="flag-icon flag-icon-gb"></span> </a>
        
 
