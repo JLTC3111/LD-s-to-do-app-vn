@@ -15,7 +15,7 @@ function App() {
   const [todos, setTodos] = useState([
     { input: 'Hello! Add your first todo!', complete: true }
   ])
-  const [selectedTab, setSelectedTab] = useState('Open')
+  const [selectedTab, setSelectedTab] = useState('Incomplete')
 
 
   function handleAddTodo(newTodo) {
@@ -60,7 +60,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    document.title = "Reminder4LD"; // Change this to your desired title
+    document.title = "Reminder4ICUE"; // Change this to your desired title
   }, []);
       
   
