@@ -8,7 +8,7 @@ export function TodoList(props) {
 
     const filterTodosList = selectedTab === 'Tất Cả' ? 
     todos :
-    selectedTab === 'Đã Xong' ? 
+    selectedTab === 'Đã Làm' ? 
         todos.filter(val => val.complete) :
         todos.filter(val => !val.complete)
 

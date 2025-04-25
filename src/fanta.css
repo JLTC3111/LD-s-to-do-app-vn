@@ -88,13 +88,7 @@ body {
 
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button {
+h1,h2,h3,h4,h5,h6,button {
     font-family: "Grenze", serif;
     width: fit-content;
 }
@@ -349,16 +343,10 @@ tbody tr:nth-child(even):hover td {
 }
 
 /* Form elements */
-input,
-button,
-select,
-optgroup,
-textarea {
-    /* margin: 0; */
-}
+input,button,select,optgroup,textarea {
+/* margin: 0; */}
 
-button,
-select,
+button,select,
 input[type="submit"],
 input[type="button"],
 input[type="checkbox"],
