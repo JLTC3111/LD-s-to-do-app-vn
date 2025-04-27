@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { useEffect, useRef } from "react";
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { TodoCard } from "./TodoCard";
+import gsap from "gsap";
 
 export function TodoList(props) {
   const {
@@ -15,6 +15,7 @@ export function TodoList(props) {
 
   const listRef = useRef(null);
 
+  // 👇 Filter logic
   const filteredTodos =
     selectedTab === 'Tất Cả'
       ? todos
@@ -22,80 +23,61 @@ export function TodoList(props) {
       ? todos.filter((val) => val.complete)
       : todos.filter((val) => !val.complete);
 
+  // 👇 Animate when list updates
   useEffect(() => {
     if (listRef.current) {
-      gsap.fromTo(
-        listRef.current.children,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power2.out'
-        }
+      const cards = listRef.current.querySelectorAll(".todo-item");
+      const tl = gsap.timeline();
+
+      tl.fromTo(cards, 
+        { opacity: 0, y: 30 }, 
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" }
       );
     }
-  }, [filteredTodos.length]);
+  }, [filteredTodos]); // 👈 Every time filtered list changes!
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
 
-    const sourceIndex = result.source.index;
-    const destIndex = result.destination.index;
+    const newTodos = [...todos];
+    const [movedItem] = newTodos.splice(result.source.index, 1);
+    newTodos.splice(result.destination.index, 0, movedItem);
 
-    const updatedFilteredTodos = [...filteredTodos];
-    const [movedItem] = updatedFilteredTodos.splice(sourceIndex, 1);
-    updatedFilteredTodos.splice(destIndex, 0, movedItem);
-
-    if (selectedTab === 'Tất Cả') {
-      setTodos(updatedFilteredTodos);
-      handleSaveData(updatedFilteredTodos);
-    } else {
-      const newTodos = [...todos];
-      let filterFn = selectedTab === 'Đã Làm' ? t => t.complete : t => !t.complete;
-      let filteredIdx = 0;
-      for (let i = 0; i < newTodos.length; i++) {
-        if (filterFn(newTodos[i])) {
-          newTodos[i] = updatedFilteredTodos[filteredIdx++];
-        }
-      }
-      setTodos(newTodos);
-      handleSaveData(newTodos);
-    }
+    setTodos(newTodos);
+    localStorage.setItem('todo-app', JSON.stringify({ todos: newTodos }));
   };
-
-  function handleSaveData(currTodos) {
-    localStorage.setItem('todo-app', JSON.stringify({ todos: currTodos }))
-  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="todo-list">
         {(provided) => (
-          <div className="todo-List" {...provided.droppableProps} ref={(el) => {
-            provided.innerRef(el);
-            listRef.current = el;
-          }}>
+          <div
+            className="todo-List"
+            {...provided.droppableProps}
+            ref={(node) => {
+              listRef.current = node;
+              provided.innerRef(node);
+            }}
+          >
             {filteredTodos.map((todo, index) => (
-  <Draggable key={todo.id} draggableId={String(todo.id)} index={index}>
-    {(provided) => (
-      <div
-        ref={provided.innerRef}
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}
-      >
-        <TodoCard
-          todo={todo}
-          todoId={todo.id} 
-          handleEditTodo={handleEditTodo}
-          handleDeleteTodo={handleDeleteTodo}
-          handleCompleteTodo={handleCompleteTodo}
-        />
-      </div>
-    )}
-  </Draggable>
-))}
+              <Draggable key={todo.id} draggableId={String(todo.id)} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <TodoCard
+                      todo={todo}
+                      todoId={todo.id} // ✅ Pass the ID
+                      handleEditTodo={handleEditTodo}
+                      handleDeleteTodo={handleDeleteTodo}
+                      handleCompleteTodo={handleCompleteTodo}
+                    />
+                  </div>
+                )}
+              </Draggable>
+            ))}
             {provided.placeholder}
           </div>
         )}

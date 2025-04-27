@@ -1,13 +1,22 @@
 import { useState } from "react";
 
 export function TodoInput(props) {
-  const { handleAddTodo } = props;
+  const { selectedTab, setSelectedTab, handleAddTodo } = props;
   const [inputValue, setInputValue] = useState("");
 
-  function submitTask() {
+  function submitInput() {
     if (!inputValue.trim()) return;
-    handleAddTodo(inputValue);
-    setInputValue("");
+    
+    if (selectedTab === 'Đã Làm' || selectedTab === 'Tất Cả') {
+      setSelectedTab('Chưa Làm');
+      setTimeout(() => { 
+        handleAddTodo(inputValue.trim());
+      }, 50);
+    } else {
+      handleAddTodo(inputValue.trim());
+    }
+  
+    setInputValue(""); // ✅ Clear after adding
   }
 
   return (
@@ -15,14 +24,14 @@ export function TodoInput(props) {
       <input
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Add Task"
-        onKeyDown={(e) => {
+        placeholder="Thêm"
+        onKeyUp={(e) => {
           if (e.key === "Enter") {
-            submitTask();
+            submitInput();
           }
         }}
       />
-      <button onClick={submitTask}>
+      <button onClick={submitInput}>
         <i className="fa-solid fa-plus"></i>
       </button>
     </div>

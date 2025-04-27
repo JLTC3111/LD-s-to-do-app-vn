@@ -27,7 +27,12 @@ function App() {
     ];
     setTodos(newTodoList);
     handleSaveData(newTodoList);
+    
+    if (selectedTab === 'Tất Cả' || 'Đã Làm') {
+      setSelectedTab('Chưa Làm');
+    }
   }
+
 
   function handleCompleteTodo(id) {
     const newTodoList = todos.map(todo =>

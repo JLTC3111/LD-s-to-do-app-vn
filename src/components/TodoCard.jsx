@@ -82,10 +82,11 @@ export function TodoCard(props) {
         {isEditing ? (
           <>
             <button onClick={saveEdit} onMouseEnter={handleButtonHover} onMouseLeave={handleButtonLeave}>
-              <h6>Save</h6>
+              <h6>Lưu</h6>
             </button>
+
             <button onClick={cancelEdit} onMouseEnter={handleButtonHover} onMouseLeave={handleButtonLeave}>
-              <h6>Cancel</h6>
+              <h6>Huỷ</h6>
             </button>
           </>
         ) : (
@@ -93,14 +94,14 @@ export function TodoCard(props) {
           
             
             <button onClick={() => handleComplete(todoId)} disabled={todo.complete} onMouseEnter={handleButtonHover} onMouseLeave={handleButtonLeave} >
-            <h6>Done</h6></button>
+            <h6>Xong</h6></button>
               
             <button className="delete-button" onClick={() => handleDelete(todoId)} onMouseEnter={handleButtonHover} onMouseLeave={handleButtonLeave}>
-            <h6>Delete</h6>
+            <h6>Xoá</h6>
             </button>
 
             <button onClick={() => setIsEditing(true)} disabled={todo.complete} onMouseEnter={handleButtonHover} onMouseLeave={handleButtonLeave}>
-              <h6>Edit</h6>
+              <h6>Sửa</h6>
             </button>
              
               
