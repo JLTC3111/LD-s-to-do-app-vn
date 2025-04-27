@@ -2,8 +2,7 @@ import { Header } from "./components/Header"
 import { Tabs } from "./components/Tabs"
 import { TodoInput } from "./components/TodoInput"
 import { TodoList } from "./components/TodoList"
-import { useState, useEffect } from 'react'
-import { PomodoroTimer } from "./components/PomodoroTimer";
+import { useState, useEffect } from 'react' 
 
 function App() {
   // const todos = [
@@ -15,38 +14,41 @@ function App() {
   const [todos, setTodos] = useState([
     { input: 'Hello! Add your first todo!', complete: true }
   ])
-  const [selectedTab, setSelectedTab] = useState('Incomplete')
-
+  const [selectedTab, setSelectedTab] = useState('Tất Cả')
 
   function handleAddTodo(newTodo) {
-    const newTodoList = [...todos, { input: newTodo, complete: false }]
-    setTodos(newTodoList)
-    handleSaveData(newTodoList)
+    const newTodoList = [
+      ...todos,
+      {
+        id: Date.now() + Math.random(), // ← add ID when creating
+        input: newTodo,
+        complete: false
+      }
+    ];
+    setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
 
-  function handleCompleteTodo(index) {
-    // update/edit/modify
-    let newTodoList = [...todos]
-    let completedTodo = todos[index]
-    completedTodo['complete'] = true
-    newTodoList[index] = completedTodo
-    setTodos(newTodoList)
-    handleSaveData(newTodoList)
+  function handleCompleteTodo(id) {
+    const newTodoList = todos.map(todo =>
+      todo.id === id ? { ...todo, complete: true } : todo
+    );
+    setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
-
-  function handleEditTodo(index, newText) {
-    const updatedTodos = [...todos];
-    updatedTodos[index].input = newText;
-    setTodos(updatedTodos);
-    handleSaveData(updatedTodos);
+  
+  function handleDeleteTodo(id) {
+    const newTodoList = todos.filter(todo => todo.id !== id);
+    setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
-
-  function handleDeleteTodo(index) {
-    let newTodoList = todos.filter((val, valIndex) => {
-      return valIndex !== index
-    })
-    setTodos(newTodoList)
-    handleSaveData(newTodoList)
+  
+  function handleEditTodo(id, newText) {
+    const newTodoList = todos.map(todo =>
+      todo.id === id ? { ...todo, input: newText } : todo
+    );
+    setTodos(newTodoList);
+    handleSaveData(newTodoList);
   }
 
   function handleSaveData(currTodos) {
@@ -54,43 +56,51 @@ function App() {
   }
 
   useEffect(() => {
-    if (!localStorage || !localStorage.getItem('todo-app')) { return }
-    let db = JSON.parse(localStorage.getItem('todo-app'))
-    setTodos(db.todos)
-  }, [])
+    if (!localStorage || !localStorage.getItem('todo-app')) return;
+  
+    let db = JSON.parse(localStorage.getItem('todo-app'));
+    
+    const loadedTodos = db.todos.map(todo => ({
+      ...todo,
+      id: todo.id || Date.now() + Math.random() // assign ID if missing
+    }));
+  
+    setTodos(loadedTodos);
+  }, []);
 
   useEffect(() => {
-    document.title = "Reminder4ICUE"; // Change this to your desired title
+    document.title = "Reminder4LD"; // Change this to your desired title
   }, []);
       
   
+
   return (
 
     <>
      <Header todos={todos} /> 
+
      <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} todos={todos} />
-      <TodoList handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleEditTodo={handleEditTodo} selectedTab={selectedTab} todos={todos} />
-      <TodoInput handleAddTodo={handleAddTodo} />
-      <PomodoroTimer /> {/* Add the PomodoroTimer game here */}
+
+    <TodoList handleCompleteTodo={handleCompleteTodo} handleDeleteTodo={handleDeleteTodo} handleEditTodo={handleEditTodo} selectedTab={selectedTab} todos={todos} setTodos={setTodos} />
+
+    <TodoInput handleAddTodo={handleAddTodo} />
+      
       
       <div class="language-switcher">
-         <a href="https://reminder4ld.netlify.app/" class="flag-link">
+         <a href="https://icuestodoapp.netlify.app/" class="flag-link">
            <span class="flag-icon flag-icon-gb"></span> </a>
-       
-
         <a href="https://remindericuevn.netlify.app/" class="flag-link">
-           <span class="flag-icon flag-icon-vn"></span>  </a>
-     
+           <span class="flag-icon flag-icon-vn"></span> </a>
       </div>
 
      <div className="app-container">
-      <video className="video-bg" autoPlay muted playsInline>
+        <video className="video-bg" autoPlay loop muted playsInline>
         <source src="/bg-video.mp4" type="video/mp4" />
-      </video>
+        </video>
       </div>
      
     </>
   )
 }
 
-export default App;
+export default App
