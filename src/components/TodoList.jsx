@@ -23,18 +23,6 @@ export function TodoList(props) {
       ? todos.filter((val) => val.complete)
       : todos.filter((val) => !val.complete);
 
-  // 👇 Animate when list updates
-  useEffect(() => {
-    if (listRef.current) {
-      const cards = listRef.current.querySelectorAll(".todo-item");
-      const tl = gsap.timeline();
-
-      tl.fromTo(cards, 
-        { opacity: 0, y: 30 }, 
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power3.out" }
-      );
-    }
-  }, [filteredTodos]); // 👈 Every time filtered list changes!
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
