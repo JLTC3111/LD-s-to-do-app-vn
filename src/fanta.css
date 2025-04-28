@@ -71,7 +71,7 @@
 }
 
 body {
-    cursor: url('/cursors/orange_pencil.cur') 16 16, auto;
+    cursor: url('/cursors/foo610.cur') 16 16, auto;
     background: var(--background-primary);
     color: var(--color-primary);
     font-size: 0.875rem;
