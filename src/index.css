@@ -156,25 +156,6 @@ hr {
   }
 }
 
-.app-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Ensures it covers the entire screen */
-  z-index: -1;
-  /* Keeps it behind other content */
-}
-
 .content {
   position: relative;
   color: white;
@@ -196,27 +177,76 @@ footer {
 }
 
 .language-switcher {
-  position: absolute; /* Ensure it moves relative to <body> */
-  display: inline-block;
-  top: 0; /* Adjust vertical positioning */
-  left: 68%; /* Adjust horizontal positioning */
-  gap: 8px; /* Adjust spacing between flags */
+  position: fixed;
+  top: 8.5%;
+  right: 26.5%;
+  display: flex;
   align-items: center;
-  margin-top: 3rem;
-  box-shadow: 20px 20px 20px rgba(208, 63, 63, 0.5);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  overflow: hidden;
+  transition: width 0.4s ease;
+  width: 50px; /* default small size */
+}
+
+.language-switcher:hover {
+  width: 160px; /* expand on hover */
+}
+
+.globe-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.flag-links {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+}
+
+.language-switcher:hover .flag-links {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .flag-link {
-  font-size: 18px; /* Adjust flag size */
-  cursor: pointer;
+  font-size: 20px;
   transition: transform 0.3s;
-  z-index: 10; /* Ensure it stays on top of video */
 }
 
 .flag-link:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
-@media (min-width:640px) {
+
+.video-background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Ensures it covers the entire screen */
+  z-index: -1;
+  /* Keeps it behind other content */
+}
+
+
+@media (max-width:640px) {
   .tab-button {
     padding: 0.5rem 1.5rem;
   }
@@ -228,25 +258,6 @@ footer {
     gap: 1rem;
   }
 
-  .app-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Ensures it covers the entire screen */
-    z-index: -1;
-    /* Keeps it behind other content */
-  }
-
   .content {
     position: relative;
     color: white;
@@ -254,22 +265,10 @@ footer {
     z-index: 1;
   }
 
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    margin-top: -300px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
   .language-switcher {
     position: absolute; /* Ensure it moves relative to <body> */
-    top: 40px; /* Adjust vertical positioning */
-    right: 360px; /* Adjust horizontal positioning */
+    top: 8.5%; /* Adjust vertical positioning */
+    right: 5%; /* Adjust horizontal positioning */
     display: flex;
     gap: 10px; /* Adjust spacing between flags */
     align-items: center;
