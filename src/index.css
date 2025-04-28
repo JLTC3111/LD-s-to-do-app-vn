@@ -81,11 +81,11 @@ hr {
 }
 
 .todo-buttons {
+  position: relative;
   display: flex;
   gap: 1rem;
-  position: relative;
   z-index: 5;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .todo-buttons button {
@@ -252,10 +252,15 @@ footer {
   }
 
   .todo-item {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  .todo-buttons {
+    width: 100%;
+    justify-content: left;
   }
 
   .content {
@@ -267,22 +272,22 @@ footer {
 
   .language-switcher {
     position: absolute; /* Ensure it moves relative to <body> */
-    top: 8.5%; /* Adjust vertical positioning */
-    right: 5%; /* Adjust horizontal positioning */
+    top: 3.5%; /* Adjust vertical positioning */
+    right: 7.5%; /* Adjust horizontal positioning */
     display: flex;
     gap: 10px; /* Adjust spacing between flags */
     align-items: center;
     box-shadow: 20px 20px 20px rgba(208, 63, 63, 0.5);
 }
 
-.flag-link {
-    font-size: 28px; /* Adjust flag size */
-    cursor: pointer;
-    transition: transform 0.3s;
-    z-index: 1000; /* Ensure it stays on top of video */
-}
+  .flag-link {
+      font-size: 28px; /* Adjust flag size */
+      cursor: pointer;
+      transition: transform 0.3s;
+      z-index: 1000; /* Ensure it stays on top of video */
+  }
 
-.flag-link:hover {
-    transform: scale(1.5);
+  .flag-link:hover {
+      transform: scale(1.5);
 }
 }
