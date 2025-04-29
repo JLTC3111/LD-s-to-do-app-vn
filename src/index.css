@@ -23,6 +23,8 @@ h1 {
 }
 
 .tab-button {
+  display: flex;
+  justify-content: space-between;
   border: none;
   box-shadow: none;
   padding: 0.5rem 1rem;
