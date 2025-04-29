@@ -19,7 +19,7 @@ h1 {
 }
 
 .tab-container {
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .tab-button {
@@ -179,7 +179,7 @@ footer {
 }
 
 .language-switcher {
-  position: fixed;
+  position: relative;
   top: 8.5%;
   right: 26.5%;
   display: flex;
@@ -229,28 +229,25 @@ footer {
 }
 
 .video-background {
-  position: relative;
+  position: fixed; /* not relative! */
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: -1; /* stay behind everything */
 }
 
 .video-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Ensures it covers the entire screen */
-  z-index: -1;
-  /* Keeps it behind other content */
 }
 
 
 @media (max-width:640px) {
   .tab-button {
-    padding: 0.5rem 1.5rem;
+    flex-wrap: nowrap;
   }
 
   .todo-item {
@@ -288,4 +285,7 @@ footer {
       z-index: 1000; /* Ensure it stays on top of video */
   }
 
+  .input-container input {
+    max-width: 500px;
+  }
 }
