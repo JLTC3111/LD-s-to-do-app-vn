@@ -89,7 +89,7 @@ function App() {
       
       
     <div className="language-switcher">
-          <div className="globe-icon">🌎</div> 
+          <div className="globe-icon"> 🌎 </div> 
           <div className="flag-links">
             <a href="https://reminder4LD.netlify.app/" className="flag-link">
               <span className="flag-icon flag-icon-gb"></span>
